@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!-- "Credits: https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_data"
+small adaptations made
+-->
+
+<robot name="physics">
+<link name="wall">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <origin xyz="2.9 0 0"/>
+      <material name="red">
+        <color rgba="0.8 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+          <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <origin xyz="2.9 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+    <link name="slideBar">
+    <visual>
+      <geometry>
+        <box size="4.8 0.05 0.05"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="transp">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+ <joint name="slider_to_wall" type="prismatic">
+    <axis xyz="0 1 0"/>
+    <origin xyz="0.0 0.0 0.0"/>
+    <parent link="wall"/>
+    <child link="slideBar"/>
+    <limit effort="1000.0" lower="-2.35" upper="2.35" velocity="5"/>
+  </joint>
+  <link name="cart">
+    <visual>
+      <geometry>
+        <box size="0.5 0.5 0.1"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+      <material name="blue">
+        <color rgba="0 0 .8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+          <box size="0.5 0.5 0.1"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+    <link name="block2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.04 0.04 0.04" />
+            </geometry>
+            <material name="Green2">
+                <color rgba="0.1 0.8 0 1.0" />
+            </material>
+        </visual>
+        <inertial>
+            <mass value="1000" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </link>
+    <link name="pole">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 1.0"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <inertial>
+    <origin xyz="0 0 0.5"/>
+      <mass value="1000"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+<collision>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <geometry>
+        <box size="0.05 0.05 1.0"/>	
+      </geometry>
+    </collision>
+  </link>
+    <joint name="1_2_joint" type="continuous">
+        <parent link="cart" />
+        <child link="block2" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+
+    </joint>
+    <joint name="2_3_joint" type="continuous">
+        <parent link="block2" />
+        <child link="pole" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="1 0 0" />
+
+    </joint>
+
+
+  <joint name="slider_to_cart" type="prismatic">
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.0 0.0 0.0"/>
+    <parent link="slideBar"/>
+    <child link="cart"/>
+    <limit effort="1000.0" lower="-2.35" upper="2.35" velocity="5"/>
+  </joint>
+
+
+
+  
+</robot>
