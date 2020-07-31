@@ -1,5 +1,5 @@
 # Q-Learning-vs-Deep-Q-Learning-in-continuous-state-space
-Autonomous and Adaptive Systems Exam Project
+Autonomous and Adaptive Systems Exam's Project
 
 The project's purpose is comparing, from a performance point of view, two of the best known algorithms in the field of reinforcement learning: Q-Learning vs Deep Q-Learning. Can the discretization of the space "almost" guarantee the same performance of a deep q learning approach in some cases? From this project the answer is "Yes" however, as the results show, the context in which the discretization of the continuous state space is applied shows that the performance could be comparable in terms of accuracy and score average but not in terms of learning speed. The Deep Q-learning Agent is always faster than the Q-Learning Agent.
 
