@@ -1,6 +1,6 @@
 Keras==2.3.1
 Keras-gpu==2.3.1
 matplotlib==3.2.2
-numpy==1.18.5
+numpy==1.22.0
 gym==0.7.4
 pybullet==2.8.3
